@@ -296,10 +296,6 @@ function renderLogin() {
           ${state.loading ? 'กำลังเข้าสู่ระบบ...' : 'เข้าสู่ระบบ'}
         </button>
       </form>
-      <p style="font-size:11px;color:var(--cream-dim);margin-top:16px;line-height:1.5;">
-        พิมพ์ชื่อผู้ใช้ เช่น <strong>admin</strong> หรือใช้อีเมลเดิมได้<br>
-        ใน Firebase Console ใส่ Email เป็น <code>admin@phuket-donghood.firebaseapp.com</code>
-      </p>
     </div>
   </div>`;
 }
