@@ -9,8 +9,9 @@
     "deploy:rules": "firebase deploy --only firestore:rules,storage",
     "deploy:hosting": "npm run build && firebase deploy --only hosting",
     "deploy": "npm run build && firebase deploy",
-    "seed": "node scripts/seed-firestore.mjs",
-    "seed:menu": "node scripts/seed-menu.mjs"
+    "seed": "node --env-file=.env scripts/seed-firestore.mjs",
+    "seed:menu": "node --env-file=.env scripts/seed-menu.mjs",
+    "check:firestore": "node --env-file=.env scripts/check-firestore.mjs"
   },
   "devDependencies": {
     "firebase-tools": "^14.0.0",

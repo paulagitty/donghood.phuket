@@ -2,16 +2,7 @@ import { initializeApp, getApps, getApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
 import { getAuth } from 'firebase/auth';
-
-const firebaseConfig = {
-  apiKey: 'AIzaSyADvua1E38EI59IM_sT7-xbftnuN7TFopA',
-  authDomain: 'phuket-donghood.firebaseapp.com',
-  projectId: 'phuket-donghood',
-  storageBucket: 'phuket-donghood.firebasestorage.app',
-  messagingSenderId: '866873070397',
-  appId: '1:866873070397:web:7a7a605198c6e56137eb54',
-  measurementId: 'G-1J6Q69E9RW',
-};
+import { firebaseConfig } from './firebase-config.js';
 
 export const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
 export const db = getFirestore(app);

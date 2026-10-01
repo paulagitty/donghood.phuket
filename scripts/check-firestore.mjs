@@ -11,15 +11,7 @@ import {
   query,
   orderBy,
 } from 'firebase/firestore';
-
-const firebaseConfig = {
-  apiKey: 'AIzaSyADvua1E38EI59IM_sT7-xbftnuN7TFopA',
-  authDomain: 'phuket-donghood.firebaseapp.com',
-  projectId: 'phuket-donghood',
-  storageBucket: 'phuket-donghood.firebasestorage.app',
-  messagingSenderId: '866873070397',
-  appId: '1:866873070397:web:7a7a605198c6e56137eb54',
-};
+import { firebaseConfig } from './firebase-config.mjs';
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
