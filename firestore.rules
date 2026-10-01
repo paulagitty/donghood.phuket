@@ -1,0 +1,47 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isAdmin() {
+      return request.auth != null;
+    }
+
+    match /menu_items/{itemId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /store_settings/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /delivery_schedule/{dateId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /delivery_zones/{zoneId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /delivery_drivers/{driverId} {
+      allow get: if true;
+      allow list: if isAdmin();
+      allow write: if isAdmin();
+    }
+
+    match /orders/{orderId} {
+      allow create: if request.resource.data.keys().hasAll([
+        'orderId', 'phone', 'items', 'total', 'status', 'paymentMethod'
+      ]) && request.resource.data.status == 'pending_slip_review'
+      && request.resource.data.paymentMethod in ['promptpay', 'cod'];
+      allow read: if isAdmin() || (
+        resource.data.driverId != null && resource.data.driverId is string && resource.data.driverId.size() > 0
+      );
+      allow update: if isAdmin();
+      allow delete: if isAdmin();
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "hosting": {
+    "public": "dist",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "redirects": [
+      { "source": "/", "destination": "/customer/", "type": 302 }
+    ],
+    "rewrites": [
+      { "source": "/customer", "destination": "/customer/index.html" },
+      { "source": "/admin", "destination": "/admin/index.html" },
+      { "source": "/driver", "destination": "/driver/index.html" }
+    ],
+    "headers": [
+      {
+        "source": "**/*.@(js|css|png|jpg|jpeg|gif|webp|svg|woff2)",
+        "headers": [{ "key": "Cache-Control", "value": "public,max-age=604800" }]
+      }
+    ]
+  },
+  "firestore": {
+    "rules": "firestore.rules"
+  },
+  "storage": {
+    "rules": "storage.rules"
+  }
+}

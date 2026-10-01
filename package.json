@@ -1,0 +1,22 @@
+{
+  "name": "donghood-order",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0 --port 3000",
+    "build": "vite build && node scripts/copy-static.mjs",
+    "preview": "vite preview --host 0.0.0.0 --port 3000",
+    "deploy:rules": "firebase deploy --only firestore:rules,storage",
+    "deploy:hosting": "npm run build && firebase deploy --only hosting",
+    "deploy": "npm run build && firebase deploy",
+    "seed": "node scripts/seed-firestore.mjs",
+    "seed:menu": "node scripts/seed-menu.mjs"
+  },
+  "devDependencies": {
+    "firebase-tools": "^14.0.0",
+    "vite": "^8.0.16"
+  },
+  "dependencies": {
+    "firebase": "^12.17.1"
+  }
+}
